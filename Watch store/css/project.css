@@ -2162,19 +2162,20 @@
            height    : 100%;
          }
 
-         #service nav {
-           width          : 100vw;
+        #service nav {
+           margin-left    : -15%;
+           width          : 130%;
            height         : 100px;
-           margin         : auto;
            display        : flex;
            justify-content: center;
            align-items    : center;
-           gap            : 15px;
-           overflow:      hidden;
+           gap            : 5px;
+           overflow       : hidden;
          }
 
          #service nav img {
-           width        : 33%;
+           padding      : 5px;
+           width        : calc(100%/3);
            height       : 100%;
            object-fit   : cover;
            border-radius: 5px;
