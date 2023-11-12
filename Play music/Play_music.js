@@ -248,11 +248,11 @@ var imageMusic = [
 var listImg = 0;
 //
 const songs = [
-  "/mp3/Như Anh Đã Thấy Em  - PhucXp.mp3",
-  "/mp3/Vì Anh Đâu Có Biết - Madihu Feat Vũ.mp3",
-  "/mp3/Tình Yêu Chậm Trễ - MONSTAR.mp3",
-  "/mp3/Có Hẹn Với Thanh Xuân -  Monstar.mp3",
-  "/mp3/Miên Man - Minh Huy.mp3",
+  "mp3/Như Anh Đã Thấy Em  - PhucXp.mp3",
+  "mp3/Vì Anh Đâu Có Biết - Madihu Feat Vũ.mp3",
+  "mp3/Tình Yêu Chậm Trễ - MONSTAR.mp3",
+  "mp3/Có Hẹn Với Thanh Xuân -  Monstar.mp3",
+  "mp3/Miên Man - Minh Huy.mp3",
 ];
 var musicIndex = 0;
 //
