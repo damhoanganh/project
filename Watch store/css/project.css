@@ -2348,8 +2348,9 @@
          }
 
          .loader {
-           left: 46%;
+           left: 48%;
            top : 40%;
+           width:30px;
          }
 
          /*  */
