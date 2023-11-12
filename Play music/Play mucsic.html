@@ -15,16 +15,15 @@
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
-    <link rel="icon" href="/image/icon-music.png" type="image/x-icon" />
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3844/3844724.png" type="image/x-icon" />
   </head>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
-
+ 
     * {
       box-sizing: border-box;
       padding: 0;
       margin: 0;
-      /* toàn bộ html */
       color: rgb(4, 4, 110);
       font-family: "Oswald", sans-serif;
       list-style: none;
@@ -32,6 +31,17 @@
       transition: 0.8s;
       scroll-behavior: smooth;
     }
+    .check-size{
+        display:block;
+        font-size:30px;
+        color:black;
+      text-align:center;
+      margin-top:40vh;
+      }
+    @media screen and (max-width:700px){
+      .check-size{
+        display:none
+      }
     #container {
       width: 100vw;
       height: 350px;
@@ -390,8 +400,10 @@
     .hide {
       display: none;
     }
+    }
   </style>
   <body>
+    <div class="check-size">Vui lòng dùng điện thoại để có trải nghiểm tốt nhất</div>
     <div id="container">
       <div class="title">Miên Man - Minh Huy</div>
       <img
