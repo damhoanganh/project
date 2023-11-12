@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Play Music</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/image/icon-music.png" type="image/x-icon" />
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+      /* toàn bộ html */
+      color: rgb(4, 4, 110);
+      font-family: "Oswald", sans-serif;
+      list-style: none;
+      text-decoration: none;
+      transition: 0.8s;
+      scroll-behavior: smooth;
+    }
+    #container {
+      width: 100vw;
+      height: 350px;
+      background-color: white;
+      color: rgb(4, 4, 110);
+      text-align: center;
+      overflow: hidden;
+      position: fixed;
+      left: 0;
+      top: 0;
+      box-shadow: rgb(4, 4, 110, 0.5) 0px 30px 30px -20px;
+      z-index: 2;
+    }
+    #container .title {
+      font-size: 22px;
+      font-weight: bold;
+      font-style: italic;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      color: rgb(255, 89, 94, 0.8);
+    }
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    #container .banner {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: -25px;
+    }
+    .banner1 {
+      animation: spin 10s linear infinite;
+    }
+
+    .control {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      margin-top: 20px;
+      width: 100vw;
+      height: 60px;
+      background-color: rgb(192, 192, 192, 0.4);
+    }
+
+    #container .control i {
+      color: rgb(4, 4, 110);
+    }
+    .time {
+      display: flex;
+      align-items: center;
+      width: 90%;
+      margin: auto;
+      padding-bottom: 15px;
+      font-size: 20px;
+    }
+    #duration {
+      margin-left: auto;
+      margin-right: 0px;
+    }
+    #audio-player {
+      display: none;
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: 200px;
+      background-color: transparent;
+      &:focus {
+        outline-color: #f8b195;
+      }
+    }
+
+    input[type="range"]::-webkit-slider-runnable-track {
+      appearance: none;
+      height: 3px;
+      background: rgb(246, 114, 128);
+      background: -webkit-linear-gradient(
+        left,
+        rgba(246, 114, 128, 1) 0%,
+        rgba(192, 108, 132, 1) 50%,
+        rgba(53, 92, 125, 1) 100%
+      );
+      background: linear-gradient(
+        to right,
+        rgba(246, 114, 128, 1) 0%,
+        rgba(192, 108, 132, 1) 50%,
+        rgba(53, 92, 125, 1) 100%
+      );
+      filter: progid:DXImageTransform.Microsoft.gradient(
+      startColorstr="#f67280",
+      endColorstr="#355c7d",
+      GradientType=1
+    );
+    }
+
+    input[type="range"]::-moz-range-track {
+      -moz-appearance: none;
+      appearance: none;
+      height: 3px;
+      background: rgb(246, 114, 128);
+      background: -moz-linear-gradient(
+        left,
+        rgba(246, 114, 128, 1) 0%,
+        rgba(192, 108, 132, 1) 50%,
+        rgba(53, 92, 125, 1) 100%
+      );
+      background: linear-gradient(
+        to right,
+        rgba(246, 114, 128, 1) 0%,
+        rgba(192, 108, 132, 1) 50%,
+        rgba(53, 92, 125, 1) 100%
+      );
+      filter: progid:DXImageTransform.Microsoft.gradient(
+      startColorstr="#f67280",
+      endColorstr="#355c7d",
+      GradientType=1
+    );
+    }
+
+    input[type="range"]::-ms-track {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      height: 3px;
+      background: rgb(246, 114, 128);
+      background: -moz-linear-gradient(
+        left,
+        rgba(246, 114, 128, 1) 0%,
+        rgba(192, 108, 132, 1) 50%,
+        rgba(53, 92, 125, 1) 100%
+      );
+      background: -webkit-linear-gradient(
+        left,
+        rgba(246, 114, 128, 1) 0%,
+        rgba(192, 108, 132, 1) 50%,
+        rgba(53, 92, 125, 1) 100%
+      );
+      background: linear-gradient(
+        to right,
+        rgba(246, 114, 128, 1) 0%,
+        rgba(192, 108, 132, 1) 50%,
+        rgba(53, 92, 125, 1) 100%
+      );
+      filter: progid:DXImageTransform.Microsoft.gradient(
+      startColorstr="#f67280",
+      endColorstr="#355c7d",
+      GradientType=1
+    );
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      border: 2px solid #f8b195;
+      border-radius: 50%;
+      height: 20px;
+      width: 20px;
+      position: relative;
+      bottom: 8px;
+      background: #222
+        url("http://codemenatalie.com/wp-content/uploads/2019/09/slider-thumb.png")
+        center no-repeat;
+      background-size: 50%;
+      box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.4);
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      -moz-appearance: none;
+      appearance: none;
+      border: 2px solid #f8b195;
+      border-radius: 50%;
+      height: 20px;
+      width: 20px;
+      position: relative;
+      bottom: 8px;
+      background: #222
+        url("http://codemenatalie.com/wp-content/uploads/2019/09/slider-thumb.png")
+        center no-repeat;
+      background-size: 50%;
+      box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.4);
+    }
+
+    input[type="range"]::-ms-thumb {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border: 2px solid #f8b195;
+      border-radius: 50%;
+      height: 20px;
+      width: 20px;
+      position: relative;
+      bottom: 8px;
+      background: #222
+        url("http://codemenatalie.com/wp-content/uploads/2019/09/slider-thumb.png")
+        center no-repeat;
+      background-size: 50%;
+      box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.4);
+    }
+    #container input {
+      width: 90%;
+      display: block;
+      margin: auto;
+      cursor: pointer;
+    }
+
+    .play_list {
+      width: 90%;
+      margin: auto;
+      margin-top: 390px;
+    }
+    .play_list div {
+      width: 100%;
+      height: 80px;
+      margin-bottom: 11px;
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 22px 70px 4px;
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      background-color: rgba(255, 255, 255);
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .play_list .image {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-left: 30px;
+      object-fit: cover;
+    }
+    .play_list .name {
+      margin-left: 20px;
+      font-size: 20px;
+      width: 35%;
+    }
+    .icon-setting {
+      background-color: transparent;
+      display: inline;
+      margin-left: auto;
+      margin-right: 20px;
+      width: auto;
+      height: auto;
+    }
+    .icon-setting i {
+      font-size: 40px;
+      color: #fb6f92;
+    }
+
+    .icon-play,
+    .icon-pause,
+    .icon-prev,
+    .icon-next,
+    .icon-heart,
+    .icon-repeat {
+      cursor: pointer;
+      width: auto;
+      height: auto;
+      display: inline;
+    }
+    .icon-pause {
+      display: none;
+    }
+    .icon-play:hover {
+      transform: scale(1.2);
+    }
+    .icon-pause:hover {
+      transform: scale(1.2);
+    }
+
+    .icon-heart2,
+    .icon-repeat2 {
+      display: none;
+      cursor: pointer;
+      width: auto;
+      height: auto;
+    }
+    .favourite {
+      position: fixed;
+      left: 0vw;
+      top: 15vh;
+      font-size: 20px;
+      background-color: rgb(4, 4, 110);
+      color: white;
+      padding: 15px 30px 15px 30px;
+      border-radius: 0 50px 50px 0;
+      z-index: 3;
+      transition: 0.4s;
+    }
+    .update {
+      position: fixed;
+      right: 0vw;
+      top: 15vh;
+      font-size: 20px;
+      background-color: rgb(4, 4, 110);
+      color: white;
+      padding: 15px 30px 15px 30px;
+      border-radius: 50px 0px 0px 50px;
+      z-index: 3;
+      transition: 0.4s;
+    }
+    .notication {
+      position: fixed;
+      left: 0vw;
+      top: 15vh;
+      font-size: 20px;
+      background-color: rgb(4, 4, 110);
+      color: white;
+      padding: 15px 30px 15px 20px;
+      border-radius: 0px 50px 50px 0px;
+      z-index: 5;
+      transition: 0.4s;
+    }
+    .dark-mode {
+      position: fixed;
+      left: 0vw;
+      top: 15vh;
+      font-size: 20px;
+      background-color: rgb(4, 4, 110);
+      color: white;
+      padding: 15px 30px 15px 20px;
+      border-radius: 0px 50px 50px 0px;
+      z-index: 5;
+      transition: 0.4s;
+      transform: translateX(-100vw);
+    }
+    .nodark {
+      transform: translateX(0);
+    }
+    .favourite2 {
+      transform: translateX(-100vw);
+    }
+    .favourite3 {
+      transform: translateX(100vw);
+    }
+    .icon-darkmode,
+    .icon-lightmode {
+      position: fixed;
+      top: 1.5vh;
+      right: 2vw;
+      z-index: 6;
+      cursor: pointer;
+    }
+    .on-dark {
+      background-color: rgb(0, 0, 0, 0.5);
+    }
+    .show {
+      display: block;
+    }
+    .hide {
+      display: none;
+    }
+  </style>
+  <body>
+    <div id="container">
+      <div class="title">Miên Man - Minh Huy</div>
+      <img
+        class="banner"
+        src="https://p16-capcut-sign-va.ibyteimg.com/tos-alisg-v-643f9f/oIXIgEeECAAyBvkGsfW4uyhAyzJ3NCCvtACWDQ~tplv-nhvfeczskr-1:250:0.webp?from=1152184139&x-expires=1726240692&x-signature=gZfPNvHQ3gHSiUKX0wdg%2FXjgBxg%3D"
+        alt="music"
+      />
+      <audio id="audio-player" controls>
+        <source src="/mp3/Miên Man - Minh Huy.mp3" type="audio/mpeg" />
+      </audio>
+      <!-- time music start to end -->
+      <div class="time">
+        <p id="current-time">0.00</p>
+        <p id="duration">0.00</p>
+      </div>
+      <!--  -->
+      <!-- input range -->
+      <input id="range" type="range" min="0" max="100" value="0" step="0.01" />
+      <!--  -->
+      <div class="control">
+        <!-- icon-repeat -->
+        <div class="icon-repeat" title="Lặp lại">
+          <i class="bx bx-repeat" style="font-size: 25px"></i>
+        </div>
+        <div class="icon-repeat2">
+          <i class="bx bx-repost" style="font-size: 32px; color: green"></i>
+        </div>
+        <!-- icon prev -->
+        <div class="icon-prev" title="Bài trước">
+          <i class="bx bx-skip-previous" style="font-size: 35px"></i>
+        </div>
+        <!-- icon play -->
+        <div class="icon-play" title="Phát">
+          <i class="bx bx-play-circle" style="font-size: 45px"> </i>
+        </div>
+        <!-- icon pause -->
+        <div class="icon-pause" title="Tạm dừng">
+          <i class="bx bx-pause-circle" style="font-size: 45px"></i>
+        </div>
+        <!-- icon next -->
+        <div class="icon-next" title="Bài sau">
+          <i class="bx bx-skip-next" style="font-size: 35px"></i>
+        </div>
+        <!-- icon-heart -->
+        <div class="icon-heart" title="Yêu thích">
+          <i class="bx bxs-heart" style="font-size: 25px"></i>
+        </div>
+        <!-- icon-heart2 -->
+        <div class="icon-heart2">
+          <i
+            class="bx bxs-heart"
+            style="font-size: 25px; color: rgb(203, 7, 7)"
+          ></i>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <div class="play_list">
+      <div>
+        <img
+          class="image"
+          src="https://noithatbinhminh.com.vn/wp-content/uploads/2022/08/anh-dep-40.jpg"
+          alt=""
+        />
+        <span class="name">Nevada</span>
+        <span class="icon-setting">
+          <i class="bx bx-menu"> </i>
+        </span>
+      </div>
+    </div>
+    <!-- notication -->
+    <div class="update favourite3">Tính năng đang phát triển</div>
+    <div class="favourite favourite2">Đã thêm vào yêu thích!</div>
+    <div class="notication favourite2">Style : Phát một bài</div>
+    <div class="dark-mode">Style : Giao diện tối</div>
+    <!--  -->
+
+    <div class="icon-darkmode">
+      <i class="bx bx-sun" style="font-size: 40px; color: rgb(4, 4, 110)"></i>
+    </div>
+    <div class="icon-lightmode hide">
+      <i class="bx bxs-sun" style="font-size: 40px; color: rgb(4, 4, 110)"></i>
+    </div>
+    <!--  -->
+    <!--  -->
+    <script src="/javascript/Play_music.js"></script>
+  </body>
+</html>

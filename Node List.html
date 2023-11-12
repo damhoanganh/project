@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Node List</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://cdn-icons-png.flaticon.com/512/6194/6194029.png"
+    />
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Oswald", sans-serif;
+      transition: 0.8s;
+      scroll-behavior: smooth;
+      color: rgb(4, 4, 110);
+    }
+    .todoList {
+      width: 400px;
+      height: auto;
+      min-height: 500px;
+      border-radius: 10px;
+      margin: auto;
+      margin-top: 10vh;
+      background-color: rgb(192, 192, 192, 0.5);
+      color: rgb(4, 4, 110);
+      overflow: hidden;
+      box-shadow: rgb(0, 0, 0, 0.8) 0px 22px 30px 4px;
+      position: relative;
+    }
+    .todoList h1 {
+      display: block;
+      margin-left: 25px;
+      margin-top: 20px;
+      font-style: italic;
+    }
+    .add {
+      margin: auto;
+      display: flex;
+      width: 80%;
+      align-items: center;
+      justify-content: center;
+      margin-top: 15px;
+    }
+    .add input {
+      width: 80%;
+      outline: none;
+      height: 40px;
+      padding-left: 20px;
+      padding-right: 35px;
+      border-radius: 30px 0 0 30px;
+      border: none;
+      font-size: 20px;
+    }
+    .add button {
+      transform: translateX(-15px);
+      height: 40px;
+      width: 20%;
+      outline: none;
+      border: none;
+      border-radius: 0 30px 30px 0;
+      font-size: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      padding-right: 5px;
+      background-color: rgb(4, 4, 110);
+      color: white;
+    }
+
+    #tasks {
+      width: 90%;
+      height: auto;
+      margin: auto;
+      margin-top: 20px;
+      z-index: 3;
+    }
+    #tasks div {
+      width: 100%;
+      min-height: 20px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      z-index: 3;
+      border-bottom: 1px solid rgb(255, 255, 255);
+    }
+    #tasks span {
+      width: 55%;
+      font-size: 25px;
+      color: rgb(0, 0, 0);
+      margin-left: 10px;
+      word-wrap: break-word;
+    }
+    #tasks .time {
+      font-size: 15px;
+      width: auto;
+      display: inline;
+      margin-left: auto;
+      margin-right: 5px;
+      border-bottom: 1px solid rgb(4, 4, 110);
+      color: white;
+      padding-top: 10px;
+    }
+    #tasks button {
+      width: 10%;
+      outline: none;
+      border: none;
+      color: rgb(4, 4, 110);
+      height: 100%;
+      background-color: transparent;
+      cursor: pointer;
+    }
+    #tasks button i {
+      font-size: 40px;
+      font-weight: bold;
+    }
+    img {
+      position: absolute;
+      left: 25%;
+      top: 40%;
+      object-fit: cover;
+      height: 200px;
+      opacity: 0.1;
+      z-index: 0;
+    }
+  </style>
+  <body>
+    <div class="todoList">
+      <h1>Node List <i class="bx bx-edit"></i></h1>
+      <div class="add">
+        <input
+          type="text"
+          id="new-task"
+          placeholder="Add new job"
+          oninput="capitalizeFirstLetter()"
+        />
+        <button class="addButton">Add</button>
+      </div>
+      <div id="tasks"></div>
+      <img
+        class="img"
+        src="https://cdn-icons-png.flaticon.com/512/6194/6194029.png"
+        alt=""
+      />
+    </div>
+    <script>
+      const img = document.querySelector(".img");
+      const addButton = document.querySelector(".addButton");
+      const input = document.getElementById("new-task");
+      // Thêm sự kiện người dùng nhập vào ô input
+      input.addEventListener("input", function () {
+        // Lấy giá trị nhập vào
+        let inputValue = input.value;
+        // Chuyển đổi chữ cái đầu tiên thành chữ hoa
+        inputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
+        // Cập nhật giá trị trong ô input
+        input.value = inputValue;
+      });
+
+      function addTask() {
+        const taskText = input.value.trim();
+        if (taskText !== "") {
+          const tasksList = document.getElementById("tasks");
+          const taskItem = document.createElement("div");
+          // Lấy giờ, phút và xác định AM hoặc PM
+          const hours = new Date().getHours();
+          const minutes = new Date().getMinutes();
+          const amOrPm = hours >= 12 ? "pm" : "am";
+          // Chuyển đổi giờ thành định dạng 12 giờ
+          const formattedHours = hours > 12 ? hours - 12 : hours;
+          const formattedTime = `${formattedHours
+            .toString()
+            .padStart(2, "0")}:${minutes
+            .toString()
+            .padStart(2, "0")} ${amOrPm}`;
+          taskItem.innerHTML = `
+      <span> ${taskText} </span>
+      <div class="time">(save to ${formattedTime})</div>
+      <button onclick="removeTask(this)"><i title="Remove" class="bx bx-check"></i></button>
+    `;
+          tasksList.appendChild(taskItem);
+          input.value = "";
+          // Lưu danh sách công việc vào localStorage
+          saveTasksToLocalStorage();
+        }
+      }
+
+      // Lưu danh sách công việc vào localStorage
+      function saveTasksToLocalStorage() {
+        const tasksList = document.getElementById("tasks").innerHTML;
+        localStorage.setItem("Job", tasksList);
+      }
+
+      addButton.addEventListener("click", () => {
+        addTask();
+      });
+
+      // Bắt sự kiện Enter
+      input.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          addTask();
+        }
+      });
+
+      function removeTask(button) {
+        const taskItem = button.parentNode;
+        const tasksList = taskItem.parentNode;
+        tasksList.removeChild(taskItem);
+        // Lưu danh sách công việc đã cập nhật vào localStorage
+        saveTasksToLocalStorage();
+        // Kiểm tra và loại bỏ các thẻ div rỗng khỏi danh sách
+        cleanEmptyDivs();
+      }
+
+      function cleanEmptyDivs() {
+        const tasksList = document.getElementById("tasks");
+        const emptyDivs = tasksList.querySelectorAll("div:empty");
+        emptyDivs.forEach((div) => tasksList.removeChild(div));
+      }
+
+      // Kiểm tra xem có dữ liệu lưu trong localStorage không
+      function loadTasksFromLocalStorage() {
+        const savedTasks = localStorage.getItem("Job");
+        if (savedTasks) {
+          const tasksList = document.getElementById("tasks");
+          tasksList.innerHTML = savedTasks;
+        }
+      }
+
+      // Gọi hàm để tải danh sách công việc khi trang được tải
+      loadTasksFromLocalStorage();
+    </script>
+  </body>
+</html>
