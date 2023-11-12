@@ -2350,7 +2350,8 @@
          .loader {
            left: 50%;
            top : 40%;
-           width:40px;
+           width: 40px;
+           color:white;
          }
 
          /*  */
