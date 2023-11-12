@@ -1362,7 +1362,9 @@
          .form_login {
            display: none;
          }
-
+         body {
+         overflow-x: hidden;
+         }
          .navbar {
            display: none;
          }
@@ -1905,7 +1907,9 @@
          .form_login {
            display: none;
          }
-
+        body {
+         overflow-x: hidden;
+         }
          .navbar {
            display: none;
          }
