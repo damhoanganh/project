@@ -2,17 +2,17 @@ const data = [
   {
     url: "https://avatar-ex-swe.nixcdn.com/song/2022/06/08/0/0/9/1/1654684969581_640.jpg",
     name: "Như Anh Đã Thấy Em - PhucXp",
-    src: "/mp3/Như Anh Đã Thấy Em  - PhucXp.mp3",
+    src: "mp3/Như Anh Đã Thấy Em  - PhucXp.mp3",
   },
   {
     url: "https://i.scdn.co/image/ab67616d0000b2732461003df8139247949c8a9d",
     name: " Vì Anh Đâu Có Biết -  Feat Vũ",
-    src: "/mp3/Vì Anh Đâu Có Biết - Madihu Feat Vũ.mp3",
+    src: "mp3/Vì Anh Đâu Có Biết - Madihu Feat Vũ.mp3",
   },
   {
     url: "https://p16-capcut-sign-va.ibyteimg.com/tos-alisg-v-643f9f/oIXIgEeECAAyBvkGsfW4uyhAyzJ3NCCvtACWDQ~tplv-nhvfeczskr-1:250:0.webp?from=1152184139&x-expires=1726240692&x-signature=gZfPNvHQ3gHSiUKX0wdg%2FXjgBxg%3D",
     name: "Miên Man - Minh Huy",
-    src: "/mp3/Miên Man - Minh Huy.mp3",
+    src: "mp3/Miên Man - Minh Huy.mp3",
   },
   {
     url: "https://i.ytimg.com/vi/NJp5Fz3mTu0/maxresdefault.jpg",
