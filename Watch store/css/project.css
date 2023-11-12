@@ -1363,6 +1363,7 @@
            display: none;
          }
          body {
+                width:100vw;
          overflow-x: hidden;
          }
          .navbar {
@@ -1908,6 +1909,7 @@
            display: none;
          }
         body {
+               width:100vw;
          overflow-x: hidden;
          }
          .navbar {
