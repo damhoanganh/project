@@ -140,7 +140,7 @@ iconfly.addEventListener("click", function (e) {
     loader2.style.display = "block";
     e.preventDefault(); // ngăn chặn load lại trang
     setTimeout(() => {
-      window.location.href = "../index.html"; // load lại trang
+      window.location.href = "https://damhoanganh.github.io/project/Watch store/index.html"; // load lại trang
     }, 2000);
   } else {
     e.preventDefault(); // ngăn chặn load lại trang khi sai tk và mk
@@ -247,7 +247,7 @@ registerSubmit.addEventListener("click", (e) => {
     registerName.value !== ""
   ) {
     setTimeout(() => {
-      window.location.href = "../index.html"; // load lại trang
+      window.location.href = "https://damhoanganh.github.io/project/Watch store/index.html"; // load lại trang
     }, 2000);
     registerForm.style.display = "none";
     loader4.style.display = "block";
