@@ -2129,12 +2129,12 @@
            margin-top      : 50px;
            border-radius   : 0px;
            background-color: rgb(192, 192, 192, 0.5);
-           height          : 550px;
-
+           height          : 250px;
+           margin-bottom   : -30px;
          }
 
          #service div {
-           display      : block;
+           display      : none;
            width        : 60%;
            height       : 130px;
            margin-left  : 50%;
