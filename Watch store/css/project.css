@@ -1178,12 +1178,12 @@
          left        : 50vw;
          transform   : translateX(-50%);
          top         : 40%;
-         width       : 60px;
+         width       : 50px;
          aspect-ratio: 1;
          --_c        : no-repeat radial-gradient(farthest-side, rgb(4, 4, 110) 92%, #0000);
          background  : var(--_c) top, var(--_c) left, var(--_c) right,
            var(--_c) bottom;
-         background-size: 12px 12px;
+         background-size: 15px 15px;
          animation      : load 0.3s infinite;
          display        : none;
        }
