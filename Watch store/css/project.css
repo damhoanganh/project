@@ -2163,17 +2163,18 @@
          }
 
          #service nav {
-           width          : 100%;
+           width          : 100vw;
            height         : 100px;
            margin         : auto;
            display        : flex;
            justify-content: center;
            align-items    : center;
            gap            : 15px;
+           overflow:      hidden;
          }
 
          #service nav img {
-           width        : 50%;
+           width        : 33%;
            height       : 100%;
            object-fit   : cover;
            border-radius: 5px;
