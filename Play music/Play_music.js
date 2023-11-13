@@ -286,10 +286,12 @@ speed.addEventListener("click", () => {
   hideMenu.style.display = "none";
   speedMusic.style.display = "flex";
   full.style.display = "block";
+  document.body.style.overflow = "hidden";
 });
 let speedMusicClick = document.querySelectorAll(".click-music");
 speedMusicClick.forEach((x) => {
   x.addEventListener("click", () => {
+    document.body.style.overflow = "scroll";
     audioPlayer.playbackRate = x.textContent;
     full.style.display = "none";
     speedMusic.style.display = "none";
@@ -303,4 +305,5 @@ speedMusicClick.forEach((x) => {
 full.addEventListener("click", () => {
   full.style.display = "none";
   speedMusic.style.display = "none";
+   document.body.style.overflow = "scroll";
 });
