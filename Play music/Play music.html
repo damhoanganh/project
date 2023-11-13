@@ -417,7 +417,6 @@
       background-color: rgb(17, 17, 17, 0.7);
       font-size: 17px;
       text-align: left;
-      border-radius: 5px;
       transform: translateX(1000px);
       transition: 0.2s;
       z-index: 7;
@@ -429,6 +428,41 @@
       width: 100%;
       color: white;
       border-bottom: 1px solid rgb(255, 255, 255);
+    }
+    .full {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-color: rgb(191, 191, 191, 0.4);
+      z-index: 7;
+      display: none;
+    }
+    .speed-music {
+      position: fixed;
+      top: 20vh;
+      left: 50vw;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 8;
+      box-shadow: rgba(0, 0, 0) 0px 22px 70px 4px;
+      border-radius: 20px;
+      background-color: rgba(255, 255, 255);
+      display: none;
+    }
+    .speed-music div {
+      width: 150px;
+      height: 80px;
+      color: rgb(4, 4, 110);
+      font-size: 20px;
+      padding-top: 30px;
+      text-align: center;
+      font-weight: bold;
+      border-bottom: 1px solid rgb(58, 55, 55);
     }
     }
   </style>
@@ -530,12 +564,21 @@
         <i class="bx bx-repeat" style="color: #d90429; font-weight: bold"></i>
         Chế độ phát
       </div>
-      <div class="download-music">
+      <div class="download-music" style="border-bottom:none">
         <i class="bx bxs-download" style="color: rgb(255, 255, 255)"></i>
         Tải bài hát
       </div>
     </div>
     <!--  -->
+      <div class="full"></div>
+    <!--  -->
+    <div class="speed-music">
+      <div class="click-music">2.0</div>
+      <div class="click-music">1.5</div>
+      <div class="click-music">1.0</div>
+      <div class="click-music" style="border: none">0.5</div>
+    </div>
+<!--  -->
     <script src="Play_music.js"></script>
   </body>
 </html>
