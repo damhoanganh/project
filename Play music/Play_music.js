@@ -91,7 +91,14 @@ span.forEach(function (index) {
   });
 });
 //
-
+// download music
+document.querySelector(".download-music").addEventListener("click", () => {
+  const downloadLink = document.createElement("a");
+  downloadLink.href = audioPlayer.src;
+  downloadLink.download = title.textContent;
+  downloadLink.click();
+});
+// 
 const timeSlider = document.getElementById("range");
 const currentTimeDisplay = document.getElementById("current-time");
 const durationDisplay = document.getElementById("duration");
