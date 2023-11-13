@@ -262,3 +262,23 @@ iconnext.addEventListener("click", () => changeSong(1));
 audioPlayer.addEventListener("ended", () => {
   changeSong(1);
 });
+// 
+const showMenu = document.querySelector(".show-menu");
+let menuSetting = document.querySelector(".menu-setting");
+showMenu.addEventListener("click", () => {
+  if (
+    menuSetting.style.transform === "translateX(1000px)" ||
+    menuSetting.style.transform === ""
+  ) {
+    menuSetting.style.transform = "translateX(0px)";
+  } else {
+    menuSetting.style.transform = "translateX(1000px)";
+  }
+});
+// Thêm vào phần khai báo biến
+const speedUpButton = document.querySelector(".speed");
+// Thêm sự kiện click cho nút Tăng tốc độ
+speedUpButton.addEventListener("click", () => {
+  // Tăng tốc độ lên gấp đôi
+  audioPlayer.playbackRate = 2.0;
+});
