@@ -163,7 +163,7 @@ var notication = document.querySelector(".notication");
 var iconDark = document.querySelector(".icon-darkmode");
 var iconLight = document.querySelector(".icon-lightmode");
 var darkMode = document.querySelector(".dark-mode");
-
+const iconrepeat = document.querySelector(".icon-repeat");
 //
 iconRepeat.addEventListener("click", function () {
   iconRepeat2.classList.add("show");
@@ -227,74 +227,30 @@ iconSetting.forEach(function (index) {
 
 const iconprev = document.querySelector(".icon-prev");
 const iconnext = document.querySelector(".icon-next");
-const iconrepeat = document.querySelector(".icon-repeat");
+// 
+let listTitle = 0;
+let listImg = 0;
+let musicIndex = 0;
+//
+const changeSong = (index) => {
+  listTitle = (listTitle + data.length + index) % data.length;
+  title.innerHTML = data[listTitle].name;
+  listImg = (listImg + data.length + index) % data.length;
+  albumArt.src = data[listImg].url;
 
-var nameMusic = [
-  "Như Anh Đã Thấy Em - PhucXp",
-  "Vì Anh Đâu Có Biết - Feat Vũ",
-  "Tình Yêu Chậm Trễ - Monstar",
-  "Có Hẹn Với Thanh Xuân - Monstar",
-  "Miên Man - Minh Huy",
-];
-var listTitle = 0;
-//
-var imageMusic = [
-  "https://avatar-ex-swe.nixcdn.com/song/2022/06/08/0/0/9/1/1654684969581_640.jpg",
-  "https://i.scdn.co/image/ab67616d0000b2732461003df8139247949c8a9d",
-  "https://p16-capcut-sign-va.ibyteimg.com/tos-alisg-v-643f9f/oEDtM1IDRD1MAMneCgbZeyCQAiEXIAAAB2wkau~tplv-nhvfeczskr-1:250:0.webp?from=1152184139&x-expires=1727697624&x-signature=vTMIPGKJuK89YPaQHt7D7SBJ86Y%3D",
-  "https://i.ytimg.com/vi/qs860m9Rn0Y/mqdefault.jpg",
-  "https://p16-capcut-sign-va.ibyteimg.com/tos-alisg-v-643f9f/oIXIgEeECAAyBvkGsfW4uyhAyzJ3NCCvtACWDQ~tplv-nhvfeczskr-1:250:0.webp?from=1152184139&x-expires=1726240692&x-signature=gZfPNvHQ3gHSiUKX0wdg%2FXjgBxg%3D",
-];
-var listImg = 0;
-//
-const songs = [
-  "mp3/Như Anh Đã Thấy Em  - PhucXp.mp3",
-  "mp3/Vì Anh Đâu Có Biết - Madihu Feat Vũ.mp3",
-  "mp3/Tình Yêu Chậm Trễ - MONSTAR.mp3",
-  "mp3/Có Hẹn Với Thanh Xuân -  Monstar.mp3",
-  "mp3/Miên Man - Minh Huy.mp3",
-];
-var musicIndex = 0;
-//
+  musicIndex = (musicIndex + index + data.length) % data.length;
+  audioPlayer.src = data[musicIndex].src;
 
-//
-iconprev.addEventListener("click", function () {
-  listTitle = (listTitle + nameMusic.length - 1) % nameMusic.length;
-  title.innerHTML = nameMusic[listTitle];
-  listImg = (listImg + imageMusic.length - 1) % imageMusic.length;
-  albumArt.src = imageMusic[listImg];
-
-  musicIndex = (musicIndex + songs.length - 1) % songs.length;
-  audioPlayer.src = songs[musicIndex];
   if (audioPlayer.paused) {
     audioPlayer.play();
     iconpause.classList.add("show");
     iconplay.classList.add("hide");
   }
-});
+};
+iconprev.addEventListener("click", () => changeSong(-1));
+iconnext.addEventListener("click", () => changeSong(1));
 // Thiết lập sự kiện ended cho thẻ audio giúp tự động phát bài mới khi hết bài
 audioPlayer.addEventListener("ended", () => {
-  listTitle = (listTitle + nameMusic.length + 1) % nameMusic.length;
-  title.innerHTML = nameMusic[listTitle];
-  listImg = (listImg + imageMusic.length + 1) % imageMusic.length;
-  albumArt.src = imageMusic[listImg];
-  // Chuyển sang bài hát tiếp theo
-  musicIndex = (musicIndex + 1) % songs.length;
-  audioPlayer.src = songs[musicIndex];
-  audioPlayer.play();
-});
-//
-iconnext.addEventListener("click", function () {
-  listTitle = (listTitle + nameMusic.length + 1) % nameMusic.length;
-  title.innerHTML = nameMusic[listTitle];
-  listImg = (listImg + imageMusic.length + 1) % imageMusic.length;
-  albumArt.src = imageMusic[listImg];
-
-  musicIndex = (musicIndex + 1) % songs.length;
-  audioPlayer.src = songs[musicIndex];
-  if (audioPlayer.paused) {
-    audioPlayer.play();
-    iconpause.classList.add("show");
-    iconplay.classList.add("hide");
-  }
+  // Chuyển sang bài hát tiếp theo khi hết bài
+  changeSong(1);
 });
