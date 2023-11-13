@@ -264,16 +264,18 @@ audioPlayer.addEventListener("ended", () => {
 });
 // 
 const showMenu = document.querySelector(".show-menu");
+const hideMenu = document.querySelector(".hide-menu");
 let menuSetting = document.querySelector(".menu-setting");
 showMenu.addEventListener("click", () => {
-  if (
-    menuSetting.style.transform === "translateX(1000px)" ||
-    menuSetting.style.transform === ""
-  ) {
-    menuSetting.style.transform = "translateX(0px)";
-  } else {
-    menuSetting.style.transform = "translateX(1000px)";
-  }
+  menuSetting.style.transform = "translateX(0px)";
+  showMenu.style.display = "none";
+  hideMenu.style.display = "block";
+});
+
+hideMenu.addEventListener("click", () => {
+  menuSetting.style.transform = "translateX(1000px)";
+  showMenu.style.display = "block";
+  hideMenu.style.display = "none";
 });
 // Thêm vào phần khai báo biến
 const speedUpButton = document.querySelector(".speed");
