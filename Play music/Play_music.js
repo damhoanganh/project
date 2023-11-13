@@ -138,10 +138,6 @@ function formatTime(time) {
   return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
 }
 //
-
-//
-//
-
 iconplay.addEventListener("click", function () {
   iconpause.classList.add("show");
   iconplay.classList.add("hide");
@@ -169,15 +165,21 @@ iconRepeat.addEventListener("click", function () {
   iconRepeat2.classList.add("show");
   iconRepeat.classList.add("hide");
   notication.classList.remove("favourite2");
+  notication.innerHTML = "Style: Phát lặp một bài";
   setTimeout(() => {
     notication.classList.add("favourite2");
-  }, 1500);
+  }, 1000);
   // khi click se phát lặp lại bài đang phát
   audioPlayer.loop = true;
 });
 iconRepeat2.addEventListener("click", function () {
   iconRepeat2.classList.remove("show");
   iconRepeat.classList.remove("hide");
+  notication.classList.remove("favourite2");
+  notication.innerHTML = "Style: Phát theo danh sách";
+  setTimeout(() => {
+    notication.classList.add("favourite2");
+  }, 1000);
   // khi click sẽ thoát lặp lại một bài
   audioPlayer.loop = false;
 });
