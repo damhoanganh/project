@@ -305,12 +305,11 @@
       color: rgb(217, 5, 40, 0.9);
     }
 
-    .icon-play,
+   .icon-play,
     .icon-pause,
     .icon-prev,
     .icon-next,
-    .icon-heart,
-    .icon-repeat {
+    .icon-heart {
       cursor: pointer;
       width: auto;
       height: auto;
@@ -326,12 +325,14 @@
       transform: scale(1.2);
     }
 
-    .icon-heart2,
-    .icon-repeat2 {
+    .icon-heart2 {
       display: none;
       cursor: pointer;
       width: auto;
       height: auto;
+    }
+    .icon-repeat2{
+      display: none;
     }
     .favourite {
       position: fixed;
@@ -399,13 +400,6 @@
       z-index: 6;
       cursor: pointer;
     }
-    .download-music {
-      position: fixed;
-      top: 1.3vh;
-      left: 1vw;
-      z-index: 6;
-      cursor: pointer;
-    }
     .on-dark {
       background-color: rgb(0, 0, 0, 0.5);
     }
@@ -414,6 +408,27 @@
     }
     .hide {
       display: none;
+    }
+    .menu-setting{
+      position: absolute;
+      top:-280px;
+      right: -35px;
+      width: 160px;
+      background-color: rgb(17, 17, 17,0.7);
+      font-size: 20px;
+      text-align: left;
+      border-radius: 5px;
+      transform: translateX(1000px);
+      transition: 0.2s;
+      cursor: pointer;
+    }
+    .menu-setting div{
+      height: 60px;
+      padding-top: 20px;
+      padding-left: 10px;
+      width: 100%;
+      color: white;
+      border-bottom: 1px solid rgb(255, 255, 255);
     }
     }
   </style>
@@ -439,17 +454,6 @@
       <input id="range" type="range" min="0" max="100" value="0" step="0.01" />
       <!--  -->
       <div class="control">
-        <!-- icon-repeat -->
-        <div class="icon-repeat" title="Lặp lại">
-          <i class="bx bx-repeat" style="font-size: 25px"></i>
-        </div>
-        <div class="icon-repeat2">
-          <i class="bx bx-repost" style="font-size: 32px; color: green"></i>
-        </div>
-        <!-- icon prev -->
-        <div class="icon-prev" title="Bài trước">
-          <i class="bx bx-skip-previous" style="font-size: 35px"></i>
-        </div>
         <!-- icon play -->
         <div class="icon-play" title="Phát">
           <i class="bx bx-play-circle" style="font-size: 45px"> </i>
@@ -458,20 +462,50 @@
         <div class="icon-pause" title="Tạm dừng">
           <i class="bx bx-pause-circle" style="font-size: 45px"></i>
         </div>
+        <!-- icon prev -->
+        <div class="icon-prev" title="Bài trước">
+          <i class="bx bx-skip-previous" style="font-size: 35px"></i>
+        </div>
         <!-- icon next -->
         <div class="icon-next" title="Bài sau">
           <i class="bx bx-skip-next" style="font-size: 35px"></i>
         </div>
         <!-- icon-heart -->
         <div class="icon-heart" title="Yêu thích">
-          <i class="bx bxs-heart" style="font-size: 25px"></i>
+          <i class="bx bx-heart-circle" style="font-size: 30px"></i>
         </div>
         <!-- icon-heart2 -->
         <div class="icon-heart2">
           <i
-            class="bx bxs-heart"
-            style="font-size: 25px; color: rgb(203, 7, 7)"
+            class="bx bx-heart-circle"
+            style="font-size: 30px; color: rgb(203, 7, 7)"
           ></i>
+        </div>
+        <!-- icon-setting -->
+        <div class="show-menu" style="position: relative">
+          <i class="bx bx-menu" style="font-size: 36px"> </i>
+          <div class="menu-setting">
+            <div>
+              <i class="bx bx-volume-full" style="color: white"></i> Âm lượng
+            </div>
+            <div class="speed">
+              <i class="bx bx-dna" style="color: white"></i> Tốc độ phát
+            </div>
+            <div class="icon-repeat">
+              <i class="bx bx-repeat" style="color: white"></i> Chế độ phát
+            </div>
+            <div class="icon-repeat2">
+              <i
+                class="bx bx-repeat"
+                style="color: #d90429; font-weight: bold"
+              ></i>
+              Chế độ phát
+            </div>
+            <div class="download-music">
+              <i class="bx bxs-download" style="color: rgb(255, 255, 255)"></i>
+              Tải bài hát
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -503,12 +537,6 @@
       <i class="bx bxs-sun" style="font-size: 31px; color: rgb(4, 4, 110)"></i>
     </div>
     <!--  -->
-    <div class="download-music">
-      <i
-        class="bx bxs-download"
-        style="font-size: 30px; color: rgb(4, 4, 110)"
-      ></i>
-    </div>
     <!--  -->
     <script src="Play_music.js"></script>
   </body>
