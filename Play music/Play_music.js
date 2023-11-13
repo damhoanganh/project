@@ -251,6 +251,5 @@ iconprev.addEventListener("click", () => changeSong(-1));
 iconnext.addEventListener("click", () => changeSong(1));
 // Thiết lập sự kiện ended cho thẻ audio giúp tự động phát bài mới khi hết bài
 audioPlayer.addEventListener("ended", () => {
-  // Chuyển sang bài hát tiếp theo khi hết bài
   changeSong(1);
 });
