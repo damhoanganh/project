@@ -394,8 +394,15 @@
     .icon-darkmode,
     .icon-lightmode {
       position: fixed;
-      top: 1.5vh;
+      top: 1vh;
       right: 2vw;
+      z-index: 6;
+      cursor: pointer;
+    }
+    .download-music {
+      position: fixed;
+      top: 1.3vh;
+      left: 1vw;
       z-index: 6;
       cursor: pointer;
     }
@@ -496,6 +503,12 @@
       <i class="bx bxs-sun" style="font-size: 40px; color: rgb(4, 4, 110)"></i>
     </div>
     <!--  -->
+    <div class="download-music">
+      <i
+        class="bx bxs-download"
+        style="font-size: 30px; color: rgb(4, 4, 110)"
+      ></i>
+    </div>
     <!--  -->
     <script src="Play_music.js"></script>
   </body>
