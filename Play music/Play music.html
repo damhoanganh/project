@@ -421,6 +421,7 @@
       transform: translateX(1000px);
       transition: 0.2s;
       cursor: pointer;
+      z-index: 7;
     }
     .menu-setting div {
       height: 50px;
@@ -467,30 +468,8 @@
           <i class="bx bx-skip-previous" style="font-size: 35px"></i>
         </div>
         <!-- icon next -->
-        <div class="icon-next" title="Bài sau" style="positon:relative">
+        <div class="icon-next" title="Bài sau">
           <i class="bx bx-skip-next" style="font-size: 35px"></i>
-           <div class="menu-setting">
-            <div>
-              <i class="bx bx-volume-full" style="color: white"></i> Âm lượng
-            </div>
-            <div class="speed">
-              <i class="bx bx-dna" style="color: white"></i> Tốc độ phát
-            </div>
-            <div class="icon-repeat">
-              <i class="bx bx-repeat" style="color: white"></i> Chế độ phát
-            </div>
-            <div class="icon-repeat2">
-              <i
-                class="bx bx-repeat"
-                style="color: #d90429; font-weight: bold"
-              ></i>
-              Chế độ phát
-            </div>
-            <div class="download-music">
-              <i class="bx bxs-download" style="color: rgb(255, 255, 255)"></i>
-              Tải bài hát
-            </div>
-          </div>
         </div>
         <!-- icon-heart -->
         <div class="icon-heart" title="Yêu thích">
@@ -540,6 +519,23 @@
       <i class="bx bxs-sun" style="font-size: 31px; color: rgb(4, 4, 110)"></i>
     </div>
     <!--  -->
+         <div class="menu-setting">
+      <div><i class="bx bx-volume-full" style="color: white"></i> Âm lượng</div>
+      <div class="speed">
+        <i class="bx bx-dna" style="color: white"></i> Tốc độ phát
+      </div>
+      <div class="icon-repeat">
+        <i class="bx bx-repeat" style="color: white"></i> Chế độ phát
+      </div>
+      <div class="icon-repeat2">
+        <i class="bx bx-repeat" style="color: #d90429; font-weight: bold"></i>
+        Chế độ phát
+      </div>
+      <div class="download-music">
+        <i class="bx bxs-download" style="color: rgb(255, 255, 255)"></i>
+        Tải bài hát
+      </div>
+    </div>
     <!--  -->
     <script src="Play_music.js"></script>
   </body>
