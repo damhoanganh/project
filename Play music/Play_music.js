@@ -271,16 +271,36 @@ showMenu.addEventListener("click", () => {
   showMenu.style.display = "none";
   hideMenu.style.display = "block";
 });
-
 hideMenu.addEventListener("click", () => {
   menuSetting.style.transform = "translateX(1000px)";
   showMenu.style.display = "block";
   hideMenu.style.display = "none";
 });
-// Thêm vào phần khai báo biến
-const speedUpButton = document.querySelector(".speed");
-// Thêm sự kiện click cho nút Tăng tốc độ
-speedUpButton.addEventListener("click", () => {
-  // Tăng tốc độ lên gấp đôi
-  audioPlayer.playbackRate = 2.0;
+// 
+const speed = document.querySelector(".speed");
+const speedMusic = document.querySelector(".speed-music");
+const full = document.querySelector(".full");
+speed.addEventListener("click", () => {
+  menuSetting.style.transform = "translateX(1000px)";
+  showMenu.style.display = "block";
+  hideMenu.style.display = "none";
+  speedMusic.style.display = "flex";
+  full.style.display = "block";
+});
+let speedMusicClick = document.querySelectorAll(".click-music");
+speedMusicClick.forEach((x) => {
+  x.addEventListener("click", () => {
+    audioPlayer.playbackRate = x.textContent;
+    full.style.display = "none";
+    speedMusic.style.display = "none";
+    notication.classList.remove("favourite2");
+    notication.innerHTML = "Tốc độ phát :" + " " + x.textContent;
+    setTimeout(() => {
+      notication.classList.add("favourite2");
+    }, 1000);
+  });
+});
+full.addEventListener("click", () => {
+  full.style.display = "none";
+  speedMusic.style.display = "none";
 });
