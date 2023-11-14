@@ -311,19 +311,23 @@ speedMusicClick.forEach((x) => {
 full.addEventListener("click", () => {
   full.style.display = "none";
   speedMusic.style.display = "none";
+  volumeOption.style.display = "none";
    document.body.style.overflow = "scroll";
-   wrapper5.style.display = "none";
 });
 // 
-const wrapper5 = document.querySelector(".wrapper5");
-const inputVolume = document.querySelector(".input-volume");
+const volumeOption = document.querySelector(".volume-option");
 document.querySelector(".volume").addEventListener("click", () => {
   full.style.display = "block";
-  wrapper5.style.display = "block";
+  volumeOption.style.display = "block";
   menuSetting.style.transform = "translateX(1000px)";
   showMenu.style.display = "block";
   hideMenu.style.display = "none";
 });
-inputVolume.addEventListener("input", (e) => {
-  audioPlayer.volume = e.target.value;
+let volumeClick = document.querySelectorAll(".click-volume");
+volumeClick.forEach((index) => {
+  index.addEventListener("click", () => {
+    full.style.display = "none";
+    volumeOption.style.display = "none";
+    audioPlayer.volume = index.title;
+  });
 });
