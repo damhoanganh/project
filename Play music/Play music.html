@@ -422,7 +422,7 @@
       z-index: 7;
     }
     .menu-setting div {
-      height: 50px;
+      height: 60px;
       padding-top: 20px;
       padding-left: 20px;
       width: 100%;
@@ -455,7 +455,7 @@
       display: none;
     }
     .speed-music div {
-      width: 150px;
+      width: 100px;
       height: 80px;
       color: rgb(4, 4, 110);
       font-size: 20px;
@@ -464,59 +464,29 @@
       font-weight: bold;
       border-bottom: 1px solid rgb(58, 55, 55);
     }
-        .wrapper5 {
+     .volume-option {
       position: fixed;
-      left: 50vw;
-      transform: translateX(-44%);
       top: 25vh;
-      z-index: 7;
-      height: 20rem;
-      width: 3rem;
+      left: 50vw;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 8;
+      box-shadow: rgba(0, 0, 0) 0px 22px 70px 4px;
+      border-radius: 20px;
+      background-color: rgba(255, 255, 255);
       display: none;
     }
-
-    .wrapper5::before,
-    .wrapper5::after {
-      display: block;
-      position: absolute;
-      z-index: 99;
-      color: #fff;
-      width: 100%;
+     .volume-option div {
+      width: 100px;
+      height: 80px;
+      padding-top: 30px;
       text-align: center;
-      font-size: 25px;
-      line-height: 1;
-      padding: 0.75rem 0;
-      pointer-events: none;
+      border-bottom: 1px solid rgb(58, 55, 55);
     }
-
-    .wrapper5::before {
-      content: "+";
-    }
-
-    .wrapper5::after {
-      content: "−";
-      bottom: 0;
-    }
-
-    .input-volume {
-      -webkit-appearance: none;
-      background-color: rgba(255, 255, 255);
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin: 0;
-      padding: 0;
-      width: 300px;
-      height: 90px;
-      transform: translate(-50%, -50%) rotate(-90deg);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    .input-volume::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 0;
-      box-shadow: -20rem 0 0 20rem rgb(4, 4, 110);
-    }
+      
     }
   </style>
   <body>
@@ -632,15 +602,25 @@
       <div class="click-music" style="border: none">0.5</div>
     </div>
 <!--      -->
-    <div class="wrapper5">
-      <input
-        class="input-volume"
-        type="range"
-        min="0"
-        max="100"
-        step="1"
-        value="90"
-      />
+  <div class="volume-option">
+      <div class="click-volume" title="1">
+        <i
+          class="bx bx-volume-full"
+          style="color: rgb(4, 4, 110); font-size: 25px; font-weight: bold"
+        ></i>
+      </div>
+      <div class="click-volume" title="0.5">
+        <i
+          class="bx bx-volume-low"
+          style="color: rgb(4, 4, 110); font-size: 25px; font-weight: bold"
+        ></i>
+      </div>
+      <div class="click-volume" style="border: none" title="0">
+        <i
+          class="bx bx-volume-mute"
+          style="color: rgb(4, 4, 110); font-size: 25px; font-weight: bold"
+        ></i>
+      </div>
     </div>
 <!--  -->
     <script src="Play_music.js"></script>
