@@ -543,10 +543,10 @@ page1.addEventListener("click", () => {
   randomizeList();
   container.scrollIntoView();
   loader.style.display = "block";
-  ProductList.style.display = "none";
+ ProductList.style.opacity = "0";
   setTimeout(() => {
     loader.style.display = "none";
-    ProductList.style.display = "flex";
+   ProductList.style.opacity = "1";
   }, 500);
 });
 
@@ -560,10 +560,10 @@ page2.addEventListener("click", () => {
   randomizeList();
   container.scrollIntoView();
   loader.style.display = "block";
-  ProductList.style.display = "none";
+ ProductList.style.opacity = "0";
   setTimeout(() => {
     loader.style.display = "none";
-    ProductList.style.display = "flex";
+   ProductList.style.opacity = "1";
   }, 500);
 });
 page3.addEventListener("click", () => {
@@ -576,10 +576,10 @@ page3.addEventListener("click", () => {
   randomizeList();
   container.scrollIntoView();
   loader.style.display = "block";
-  ProductList.style.display = "none";
+ ProductList.style.opacity = "0";
   setTimeout(() => {
     loader.style.display = "none";
-    ProductList.style.display = "flex";
+   ProductList.style.opacity = "1";
   }, 500);
 });
 pageRight.addEventListener("click", () => {
@@ -612,20 +612,20 @@ let loader = document.querySelector(".loader");
 statusOld.addEventListener("change", () => {
   filterStatus();
   loader.style.display = "block";
-  ProductList.style.display = "none";
+ ProductList.style.opacity = "0";
   setTimeout(() => {
     loader.style.display = "none";
-    ProductList.style.display = "flex";
+   ProductList.style.opacity = "1";
   }, 500);
 });
 
 statusNew.addEventListener("change", () => {
   filterStatus();
   loader.style.display = "block";
-  ProductList.style.display = "none";
+ ProductList.style.opacity = "0";
   setTimeout(() => {
     loader.style.display = "none";
-    ProductList.style.display = "flex";
+   ProductList.style.opacity = "1";
   }, 500);
 });
 //
@@ -637,10 +637,10 @@ document.querySelector(".low-to-high").addEventListener("click", function () {
   renderProducts(sortedProducts);
   container.scrollIntoView();
   loader.style.display = "block";
-  ProductList.style.display = "none";
+ ProductList.style.opacity = "0";
   setTimeout(() => {
     loader.style.display = "none";
-    ProductList.style.display = "flex";
+   ProductList.style.opacity = "1";
   }, 500);
 });
 
@@ -651,10 +651,10 @@ document.querySelector(".high-to-low").addEventListener("click", function () {
   renderProducts(sortedProducts);
   container.scrollIntoView();
   loader.style.display = "block";
-  ProductList.style.display = "none";
+ ProductList.style.opacity = "0";
   setTimeout(() => {
     loader.style.display = "none";
-    ProductList.style.display = "flex";
+   ProductList.style.opacity = "1";
   }, 500);
 });
 //
@@ -694,10 +694,10 @@ subjectMen.addEventListener("change", () => {
   filterSubject();
   container.scrollIntoView();
   loader.style.display = "block";
-  ProductList.style.display = "none";
+ ProductList.style.opacity = "0";
   setTimeout(() => {
     loader.style.display = "none";
-    ProductList.style.display = "flex";
+   ProductList.style.opacity = "1";
   }, 500);
 });
 
@@ -705,10 +705,10 @@ subjectWomen.addEventListener("change", () => {
   filterSubject();
   container.scrollIntoView();
   loader.style.display = "block";
-  ProductList.style.display = "none";
+ ProductList.style.opacity = "0";
   setTimeout(() => {
     loader.style.display = "none";
-    ProductList.style.display = "flex";
+   ProductList.style.opacity = "1";
   }, 500);
 });
 
@@ -716,10 +716,10 @@ subjectCouple.addEventListener("change", () => {
   filterSubject();
   container.scrollIntoView();
   loader.style.display = "block";
-  ProductList.style.display = "none";
+ ProductList.style.opacity = "0";
   setTimeout(() => {
     loader.style.display = "none";
-    ProductList.style.display = "flex";
+   ProductList.style.opacity = "1";
   }, 500);
 });
 
@@ -727,10 +727,10 @@ subjectChildren.addEventListener("change", () => {
   filterSubject();
   container.scrollIntoView();
   loader.style.display = "block";
-  ProductList.style.display = "none";
+ ProductList.style.opacity = "0";
   setTimeout(() => {
     loader.style.display = "none";
-    ProductList.style.display = "flex";
+   ProductList.style.opacity = "1";
   }, 500);
 });
 //
@@ -772,10 +772,10 @@ fengshui1.addEventListener("change", () => {
   filterFengshui();
   container.scrollIntoView();
   loader.style.display = "block";
-  ProductList.style.display = "none";
+ ProductList.style.opacity = "0";
   setTimeout(() => {
     loader.style.display = "none";
-    ProductList.style.display = "flex";
+   ProductList.style.opacity = "1";
   }, 500);
 });
 
@@ -783,10 +783,10 @@ fengshui2.addEventListener("change", () => {
   filterFengshui();
   container.scrollIntoView();
   loader.style.display = "block";
-  ProductList.style.display = "none";
+ ProductList.style.opacity = "0";
   setTimeout(() => {
     loader.style.display = "none";
-    ProductList.style.display = "flex";
+   ProductList.style.opacity = "1";
   }, 500);
 });
 
@@ -794,10 +794,10 @@ fengshui3.addEventListener("change", () => {
   filterFengshui();
   container.scrollIntoView();
   loader.style.display = "block";
-  ProductList.style.display = "none";
+ ProductList.style.opacity = "0";
   setTimeout(() => {
     loader.style.display = "none";
-    ProductList.style.display = "flex";
+   ProductList.style.opacity = "1";
   }, 500);
 });
 
@@ -805,20 +805,20 @@ fengshui4.addEventListener("change", () => {
   filterFengshui();
   container.scrollIntoView();
   loader.style.display = "block";
-  ProductList.style.display = "none";
+ ProductList.style.opacity = "0";
   setTimeout(() => {
     loader.style.display = "none";
-    ProductList.style.display = "flex";
+   ProductList.style.opacity = "1";
   }, 500);
 });
 fengshui5.addEventListener("change", () => {
   filterFengshui();
   container.scrollIntoView();
   loader.style.display = "block";
-  ProductList.style.display = "none";
+ ProductList.style.opacity = "0";
   setTimeout(() => {
     loader.style.display = "none";
-    ProductList.style.display = "flex";
+   ProductList.style.opacity = "1";
   }, 500);
 });
 //
@@ -849,20 +849,20 @@ saleUnder50.addEventListener("change", () => {
   filterSale();
   container.scrollIntoView();
   loader.style.display = "block";
-  ProductList.style.display = "none";
+ ProductList.style.opacity = "0";
   setTimeout(() => {
     loader.style.display = "none";
-    ProductList.style.display = "flex";
+   ProductList.style.opacity = "1";
   }, 500);
 });
 saleOver50.addEventListener("change", () => {
   filterSale();
   container.scrollIntoView();
   loader.style.display = "block";
-  ProductList.style.display = "none";
+ ProductList.style.opacity = "0";
   setTimeout(() => {
     loader.style.display = "none";
-    ProductList.style.display = "flex";
+   ProductList.style.opacity = "1";
   }, 500);
 });
 //
@@ -882,10 +882,10 @@ down100.addEventListener("click", function () {
   });
   container.scrollIntoView();
   loader.style.display = "block";
-  ProductList.style.display = "none";
+ ProductList.style.opacity = "0";
   setTimeout(() => {
     loader.style.display = "none";
-    ProductList.style.display = "flex";
+   ProductList.style.opacity = "1";
   }, 500);
   this.style.backgroundColor = "green";
   down500.style.backgroundColor = "rgb(4,4,110)";
@@ -908,10 +908,10 @@ down500.addEventListener("click", function () {
   });
   container.scrollIntoView();
   loader.style.display = "block";
-  ProductList.style.display = "none";
+ ProductList.style.opacity = "0";
   setTimeout(() => {
     loader.style.display = "none";
-    ProductList.style.display = "flex";
+   ProductList.style.opacity = "1";
   }, 500);
   this.style.backgroundColor = "green";
   down100.style.backgroundColor = "rgb(4,4,110)";
@@ -933,10 +933,10 @@ down700.addEventListener("click", function () {
   });
   container.scrollIntoView();
   loader.style.display = "block";
-  ProductList.style.display = "none";
+ ProductList.style.opacity = "0";
   setTimeout(() => {
     loader.style.display = "none";
-    ProductList.style.display = "flex";
+   ProductList.style.opacity = "1";
   }, 500);
   this.style.backgroundColor = "green";
   down100.style.backgroundColor = "rgb(4,4,110)";
@@ -958,10 +958,10 @@ up700.addEventListener("click", function () {
   });
   container.scrollIntoView();
   loader.style.display = "block";
-  ProductList.style.display = "none";
+ ProductList.style.opacity = "0";
   setTimeout(() => {
     loader.style.display = "none";
-    ProductList.style.display = "flex";
+   ProductList.style.opacity = "1";
   }, 500);
   this.style.backgroundColor = "green";
   down100.style.backgroundColor = "rgb(4,4,110)";
@@ -975,10 +975,10 @@ document.querySelector(".clear-filter").addEventListener("click", function () {
     product.style.display = "block";
   });
   loader.style.display = "block";
-  ProductList.style.display = "none";
+ ProductList.style.opacity = "0";
   setTimeout(() => {
     loader.style.display = "none";
-    ProductList.style.display = "flex";
+   ProductList.style.opacity = "1";
   }, 500);
   down100.style.backgroundColor = "rgb(4,4,110)";
   down500.style.backgroundColor = "rgb(4,4,110)";
