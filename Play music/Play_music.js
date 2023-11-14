@@ -178,6 +178,9 @@ iconRepeat.addEventListener("click", function () {
   }, 1000);
   // khi click se phát lặp lại bài đang phát
   audioPlayer.loop = true;
+  menuSetting.style.transform = "translateX(1000px)";
+  showMenu.style.display = "block";
+  hideMenu.style.display = "none";
 });
 iconRepeat2.addEventListener("click", function () {
   iconRepeat2.classList.remove("show");
@@ -189,6 +192,9 @@ iconRepeat2.addEventListener("click", function () {
   }, 1000);
   // khi click sẽ thoát lặp lại một bài
   audioPlayer.loop = false;
+  menuSetting.style.transform = "translateX(1000px)";
+  showMenu.style.display = "block";
+  hideMenu.style.display = "none";
 });
 //
 iconHeart.addEventListener("click", function () {
