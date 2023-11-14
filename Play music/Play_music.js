@@ -54,6 +54,31 @@ const data = [
     name: "Trước Khi Em Tồn Tại - Cover",
     src: "mp3/Trước Khi Em Tồn Tại - Cover.mp3",
   },
+   {
+    url: "https://p16-capcut-sign-va.ibyteimg.com/tos-alisg-v-643f9f/oMn6tEAcEh7CXLAAjdyXEzvBYIdYI5AtwBNfDW~tplv-nhvfeczskr-1:250:0.webp?from=1152184139&x-expires=1725686731&x-signature=YhHjoHTrSpZ3ADj5Aqpup4thCyE%3D",
+    name: "Mashup Đã lỡ yêu em nhiều x Anh là ai?",
+    src: "mp3/Mashup Đã lỡ yêu em nhiều x Anh là ai.mp3",
+  },
+   {
+    url: "https://i.pinimg.com/originals/9f/dc/4f/9fdc4f5b1e94c1e597e7b2a3164d5618.jpg",
+    name: "Thằng Điên  Justatee x Phương Ly",
+    src: "mp3/Thằng Điên Justatee x Phương Ly.mp3",
+  },
+   {
+    url: "https://i.ytimg.com/vi/DVX1LNym0ac/maxresdefault.jpg",
+    name: "Hơn Cả Mây Trời - Việt",
+    src: "mp3/Hơn Cả Mây Trời - Việt.mp3",
+  },
+   {
+    url: "https://flashview.vn/wp-content/uploads/2023/08/ThumbFinalzloiu.jpg",
+    name: "Wn id 072019  3107 ft 267",
+    src: "mp3/Wn id 072019  3107 ft 267.mp3",
+  },
+  {
+    url: "https://i.ytimg.com/vi/rfTgO9rpqck/maxresdefault.jpg",
+    name: "Heat Waves",
+    src: "mp3/Heat Waves.mp3",
+  },
 ];
 const playlist = document.querySelector(".play_list");
 let html = "";
