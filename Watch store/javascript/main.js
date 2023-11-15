@@ -239,76 +239,194 @@ document.querySelector(".full-search-out").addEventListener("click", () => {
   searchNotication.style.display = "none";
   document.body.style.overflow = "auto";
 });
-// Thực hiện fetch ngay khi trang được tải
-fetch("http://localhost:3000/posts")
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-    iconSearch.addEventListener("click", () => {
-      const keyword = document.querySelector(".keyword");
-      block3.style.display = "none";
+// Search
+const dataArray = [
+  {
+    url: "https://cdn.tgdd.vn/Products/Images/7264/289338/casio-a168wer-2adf-unisex-thumbb-600x600.jpg",
+    name: "Watch Casio 38.6 x 36.3mm Unisex A168WER-2ADF",
+    price: "$8306.00(-20%)",
+  },
+  {
+    url: "https://cdn.tgdd.vn/Products/Images/7264/309420/orient-ra-aa0818l19b-nam-thumb-600x600.jpg",
+    name: " Watch Orient Mako 41.8mm  RA-AA0818L19B",
+    price: "$876.00(-21%)",
+  },
+  {
+    url: "https://cdn.tgdd.vn/Products/Images/7264/286997/citizen-em0896-89y-nu-thumb-600x600.jpg",
+    name: " Watch CITIZEN 30.5mm EM0896-89Y     ",
+    price: "$548.00(-13%)",
+  },
+  {
+    url: "https://cdn.tgdd.vn/Products/Images/7264/231868/elio-el044-01-nu-1-600x600.jpg",
+    name: " Watch ELIO Spring Sunshine 31mm EL044-01",
+    price: "$990.00(-13%)",
+  },
+  {
+    url: "https://cdn.tgdd.vn/Products/Images/7264/199510/casio-a159wa-n1df-bac-up-1-1-org.jpg",
+    name: " Watch CASIO 33mm Unisex A159WA-N1DF ",
+    price: "$560.00(-27%)",
+  },
+  {
+    url: "https://cdn.tgdd.vn/Products/Images/7264/200855/citizen-be9170-05l-xanh-2-2-org.jpg",
+    name: " Watch CITIZEN 39mm man BE9170-05L ",
+    price: "$730.00(-20%)",
+  },
+  {
+    url: "https://cdn.tgdd.vn/Products/Images/7264/200840/citizen-an3610-55l-xanh-600x600.jpg",
+    name: " Watch CITIZEN 41mm man AN3610-55L  ",
+    price: "$80.00(-37%)",
+  },
+  {
+    url: "https://cdn.tgdd.vn/Products/Images/7264/231850/elio-el027-01-nu-1-600x600.jpg",
+    name: " Watch ELIO Summer 32mm Woman EL027-01 ",
+    price: "$590.00(-25%)",
+  },
+  {
+    url: "https://cdn.tgdd.vn/Products/Images/7264/217895/korlex-ks016-01-nu-2-org.jpg",
+    name: " Watch KORLEX 36mm Woman KS016-01 ",
+    price: "$260.00(-47%)",
+  },
+  {
+    url: "https://cdn.tgdd.vn/Products/Images/7264/317070/mvw-msa089-01-s1-nam-1-600x600.jpg",
+    name: " Watch MVW Galaxy 41mm Man MSA089-01-S1 ",
+    price: "$380.00(-27%)",
+  },
+  {
+    url: "https://cdn.tgdd.vn/Products/Images/7264/309425/orient-re-av0b09n00b-nam-thumb-600x600.jpg",
+    name: " Watch Orient Star 41mm Man RE-AV0B09N00B  ",
+    price: "$2624.00(-15%)",
+  },
+  {
+    url: "https://cdn.tgdd.vn/Products/Images/7264/316393/citizen-tsuyosa-pantone-nj0158-89z-nam-1.jpg",
+    name: " Watch Citizen Tsuyosa Pantone 40 mm Man NJ0158-89Z  ",
+    price: "$508.00(-20%)",
+  },
+  {
+    url: "https://cdn.tgdd.vn/Products/Images/7264/216121/q-q-s374j302y-nam-1-600x600.jpg",
+    name: "Watch Q&Q 44 mm Man S374J302Y",
+    price: "$9508.00(-29%)",
+  },
+  {
+    url: "https://cdn.tgdd.vn/Products/Images/7264/317068/mvw-msa088-01-s1-nam-thumb-600x600.jpg",
+    name: " Watch MVW Galaxy 43 mm Woman MSA088-01-S1  ",
+    price: "$508.00(-20%)",
+  },
+  {
+    url: "https://cdn.tgdd.vn/Products/Images/7264/200948/citizen-nh8366-83a-trang-2-600x600.jpg",
+    name: " Watch CITIZEN Mechanical 41.1 mm Woman NH8366-83A  ",
+    price: "$138.00(-12%)",
+  },
+  {
+    url: "https://cdn.tgdd.vn/Products/Images/7264/309424/orient-re-av0b08l00b-nam-thumb-600x600.jpg",
+    name: " Watch ORIENT Star 41 mm Woman RE-AV0B08L00B  ",
+    price: "$218.00(-20%)",
+  },
+  {
+    url: "https://cdn.tgdd.vn/Products/Images/7264/311229/citizen-bi5104-57e-nam-thumb-600x600.jpg",
+    name: " Watch CITIZEN 41 mm Nam BI5104-57E ",
+    price: "$428.00(-29%)",
+  },
+  {
+    url: "https://cdn.tgdd.vn/Products/Images/7264/309422/orient-ra-aa0820r19b-nam-thumb-600x600.jpg",
+    name: " Watch ORIENT Mako 41.8 mm Nam RA-AA0820R19B ",
+    price: "$228.00(-29%)",
+  },
+  {
+    url: "https://cdn.tgdd.vn/Products/Images/7264/313971/casio-mtp-m100l-1avdf-nam-thumb-600x600.jpg",
+    name: " Watch CASIO 42.5 mm Nam MTP-M100L-1AVDF ",
+    price: "$168.00(-49%)",
+  },
+  {
+    url: "https://cdn.tgdd.vn/Products/Images/7264/313235/q-q-c32a-004py-nam-thumb-600x600.jpg",
+    name: " Watch Q&Q 42 mm Nam C32A-004PY ",
+    price: "$728.00(-19%)",
+  },
+  {
+    url: "https://cdn.tgdd.vn/Products/Images/7264/313233/q-q-c24a-003vy-nam-thumb-600x600.jpg",
+    name: " Watch Q&Q 42.5 mm Woman C24A-003VY ",
+    price: "$828.00(-19%)",
+  },
+  {
+    url: "https://cdn.tgdd.vn/Products/Images/7264/313225/q-q-a11a-002py-nam-110923-111345-600x600.jpg",
+    name: " Watch Q&Q 42 mm Man A11A-002PY ",
+    price: "$78.00(-19%)",
+  },
+  {
+    url: "https://cdn.tgdd.vn/Products/Images/7264/311239/citizen-an3680-50a-nam-thumb-600x600.jpg",
+    name: " Watch CITIZEN 44 mm Man AN3680-50A ",
+    price: "$438.00(-15%)",
+  },
+  {
+    url: "https://cdn.tgdd.vn/Products/Images/7264/311238/citizen-an3684-59l-nam-thumb-600x600.jpg",
+    name: " Watch CITIZEN 44 mm Woman AN3684-59L ",
+    price: "$328.00(-59%)",
+  },
+  {
+    url: "https://cdn.tgdd.vn/Products/Images/7264/311237/citizen-an3681-57e-nam-thumb-fix-600x600.jpg",
+    name: " Watch CITIZEN 44 mm Man AN3681-57E ",
+    price: "$508.00(-19%)",
+  },
+];
+iconSearch.addEventListener("click", () => {
+  const keyword = document.querySelector(".keyword");
+  block3.style.display = "none";
+  block2.style.display = "none";
+  setTimeout(() => {
+    block2.style.display = "block";
+  }, 1020);
+  loaderSearch.style.display = "block";
+  searchNotication.style.display = "none";
+  keywordUi.style.display = "none";
+  setTimeout(() => {
+    loaderSearch.style.display = "none";
+  }, 1000);
+  let results = dataArray.filter((job) => {
+    return (
+      job.name.toLowerCase().includes(keyword.value.toLowerCase()) ||
+      job.price.toLowerCase().includes(keyword.value.toLowerCase())
+    );
+  });
+  if (keyword.value === "") {
+    setTimeout(() => {
       block2.style.display = "none";
-      setTimeout(() => {
-        block2.style.display = "block";
-      }, 1020);
-      loaderSearch.style.display = "block";
-      searchNotication.style.display = "none";
-      keywordUi.style.display = "none";
-      setTimeout(() => {
-        loaderSearch.style.display = "none";
-      }, 1000);
-      let results = data.filter((job) => {
-        return (
-          job.name.toLowerCase().includes(keyword.value.toLowerCase()) ||
-          job.price.toLowerCase().includes(keyword.value.toLowerCase())
-        );
-      });
-      if (keyword.value === "") {
-        setTimeout(() => {
-          block2.style.display = "none";
-          searchNotication.style.display = "block";
-        }, 1020);
-      }
-      if (results.length > 0 && keyword.value !== "") {
-        setTimeout(() => {
-          block2.style.display = "none";
-          keywordUi.style.display = "block";
-        }, 1020);
-        keywordUi.innerHTML =
-          "There are" +
-          " " +
-          results.length +
-          " " +
-          "products with keyword" +
-          " " +
-          '"' +
-          keyword.value +
-          '"' +
-          " :";
-      }
-      let html = "";
-      if (results.length > 0 && keyword.value !== "") {
-        setTimeout(() => {
-          block2.style.display = "none";
-          block3.style.display = "flex";
-        }, 1020);
-        results.forEach((index) => {
-          html += `
+      searchNotication.style.display = "block";
+    }, 1020);
+  }
+  if (results.length > 0 && keyword.value !== "") {
+    setTimeout(() => {
+      block2.style.display = "none";
+      keywordUi.style.display = "block";
+    }, 1020);
+    keywordUi.innerHTML =
+      "There are" +
+      " " +
+      results.length +
+      " " +
+      "products with keyword" +
+      " " +
+      '"' +
+      keyword.value +
+      '"' +
+      " :";
+  }
+  let html = "";
+  if (results.length > 0 && keyword.value !== "") {
+    setTimeout(() => {
+      block2.style.display = "none";
+      block3.style.display = "flex";
+    }, 1020);
+    results.forEach((index) => {
+      html += `
           <div class="block-3-item">
             <img src="${index.url}" alt="">
             <div>${index.name}</div>
             <span>${index.price}</span>
           </div>
                     `;
-        });
-        block3.innerHTML = html;
-      }
     });
-  })
-  .catch((error) => {
-    searchNotication.innerHTML = "error download data!";
-  });
+    block3.innerHTML = html;
+  }
+});
 //
 // animation service
 const leftImage = document.querySelector(".image1");
