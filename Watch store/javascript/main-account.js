@@ -124,6 +124,7 @@ password.addEventListener("input", function (e) {
 let loader2 = document.querySelector(".full-load");
 let iconfly = document.querySelector(".icon_fly");
 iconfly.addEventListener("click", function (e) {
+  e.preventDefault();
   if (username.value === "") {
     errorUser.innerHTML = "Please enter your account";
   }
@@ -133,17 +134,21 @@ iconfly.addEventListener("click", function (e) {
   if (password.value.length < 8) {
     errorPassword.innerHTML = "min 8 characters";
   }
-  if (
-    username.value === "hoanganh17072002@gmail.com" &&
-    password.value.length > 7
-  ) {
-    loader2.style.display = "block";
-    e.preventDefault(); // ngăn chặn load lại trang
-    setTimeout(() => {
-      window.location.href = "https://damhoanganh.github.io/project/Watch store/index.html"; // load lại trang
-    }, 2000);
+  // Kiểm tra xem có thông tin đăng nhập trong Local Storage không
+  var storedUser = localStorage.getItem(username.value);
+  if (storedUser) {
+    var userObject = JSON.parse(storedUser);
+    if (
+      userObject.password === password.value &&
+      userObject.username === username.value
+    ) {
+      // Thực hiện các hành động khi đăng nhập thành công
+      loader2.style.display = "block";
+      setTimeout(() => {
+        window.location.href = "/html/index.html"; // load lại trang
+      }, 2000);
+    }
   } else {
-    e.preventDefault(); // ngăn chặn load lại trang khi sai tk và mk
     alert("Incorrect username or password");
   }
 });
@@ -246,11 +251,18 @@ registerSubmit.addEventListener("click", (e) => {
     passwordRegister.value === passwordRegister2.value &&
     registerName.value !== ""
   ) {
-    setTimeout(() => {
-      window.location.href = "https://damhoanganh.github.io/project/Watch store/index.html"; // load lại trang
-    }, 2000);
+      // Lưu thông tin người dùng vào Local Storage
+    var userObject = {
+      username: emailRegister.value,
+      password: passwordRegister.value,
+    };
+    localStorage.setItem(emailRegister.value, JSON.stringify(userObject));
+    alert("Register Successfully");
     registerForm.style.display = "none";
     loader4.style.display = "block";
+    setTimeout(() => {
+      window.location.href = "/html/index.html"; // load lại trang
+    }, 2000);
   }
 });
 //
