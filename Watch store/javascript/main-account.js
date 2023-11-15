@@ -145,7 +145,7 @@ iconfly.addEventListener("click", function (e) {
       // Thực hiện các hành động khi đăng nhập thành công
       loader2.style.display = "block";
       setTimeout(() => {
-        window.location.href = "/html/index.html"; // load lại trang
+        window.location.href = "https://damhoanganh.github.io/project/Watch store/index.html"; // load lại trang
       }, 2000);
     }
   } else {
@@ -261,7 +261,7 @@ registerSubmit.addEventListener("click", (e) => {
     registerForm.style.display = "none";
     loader4.style.display = "block";
     setTimeout(() => {
-      window.location.href = "/html/index.html"; // load lại trang
+      window.location.href = "https://damhoanganh.github.io/project/Watch store/index.html"; // load lại trang
     }, 2000);
   }
 });
